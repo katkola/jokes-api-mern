@@ -1,5 +1,6 @@
 const Joke = require('../models/joke.model');
 
+//return all
 module.exports.findAllJokes = (req, res) => {
     Joke.find()
         .then((allJokes)=> {
@@ -10,6 +11,7 @@ module.exports.findAllJokes = (req, res) => {
         });
 }
 
+//make one
 module.exports.create = (req, res) => {
     Joke.create(req.body)
         .then( newJoke => res.json({joke: newJoke}))
@@ -18,6 +20,7 @@ module.exports.create = (req, res) => {
         })
 }
 
+//find one
 module.exports.findOneSingleJoke = (req, res) => {
     Joke.findOne({_id: req.params.id})
         .then((oneJoke)=> {
